@@ -35,7 +35,11 @@ if savedIp == None and newIpLen < 4:
 	exit()
 
 usableIpInSaved = 4 - newIpLen
-finalIpList = savedIp.split('.')[:usableIpInSaved] + newIpList
+if savedIp == None:
+	savedList = []
+else:
+	savedList = savedIp.split('.')[:usableIpInSaved]
+finalIpList =  savedList + newIpList
 
 finalIp = '.'.join(finalIpList)
 saveObj(finalIp)
