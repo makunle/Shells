@@ -4,10 +4,13 @@ import sys
 import pickle
 
 def getSavedObj():
-	f = open(os.path.join(os.environ['tmp'],'autoclick.conf'),'rb')
-	savedObj = pickle.load(f)
-	f.close()
-	return savedObj
+	try:
+		f = open(os.path.join(os.environ['tmp'],'autoclick.conf'),'rb')
+		savedObj = pickle.load(f)
+		f.close()
+		return savedObj
+	except FileNotFoundError:
+		return None
 	
 def saveObj(obj):
 	f = open(os.path.join(os.environ['tmp'],'autoclick.conf'),'wb')
