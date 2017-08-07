@@ -31,7 +31,7 @@ savedIp = None
 savedPort = None
 savedName = "default"
 
-if len(sys.argv) > 1 and not sys.argv[1].split('.')[0].isdigit():
+if len(sys.argv) > 1 and not sys.argv[1].split('.')[0].isdigit() and not sys.argv[1].startswith(":"):
 	savedName = sys.argv[1]
 
 #print("savedName", savedName)
