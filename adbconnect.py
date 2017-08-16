@@ -87,4 +87,6 @@ saveObj(ipDict)
 cmd = "adb connect " + finalIp  + ":" + newPort
 print(cmd)
 os.system(cmd)
+print('')
+print('--------------adb devices-------------')
 os.system("adb devices")
