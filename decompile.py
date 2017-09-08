@@ -49,7 +49,7 @@ def perform_dex2jar(v):
 
 def perform_jdjui(v):
 	global jar_file_path
-	cmd = 'java -jar ' + tools_path + '\\' + jdjui_dir + '\\jd-gui-1.4.0.jar '
+	cmd = 'start java -jar ' + tools_path + '\\' + jdjui_dir + '\\jd-gui-1.4.0.jar '
 	argv = ""
 	if len(v) > 0:
 		argv = ' '.join(v)

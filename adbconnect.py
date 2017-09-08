@@ -4,9 +4,11 @@ import sys
 import pickle
 import re
 
+cfgfile = os.path.join(os.environ['tmp'],'adbconnect.conf')
+
 def getSavedObj():
 	try:
-		f = open(os.path.join(os.environ['tmp'],'adbconnect.conf'),'rb')
+		f = open(cfgfile,'rb')
 		savedObj = pickle.load(f)
 		f.close()
 		return savedObj
@@ -14,7 +16,7 @@ def getSavedObj():
 		return None
 	
 def saveObj(obj):
-	f = open(os.path.join(os.environ['tmp'],'adbconnect.conf'),'wb')
+	f = open(cfgfile,'wb')
 	pickle.dump(obj, f)
 	f.close()
 
@@ -59,8 +61,8 @@ for i in range( len(sys.argv) -1 ):
 #print("new port", newPort)
 if newPort == None:
 	if savedPort == None:
-		print("无缓存Port，需要重新输入")
-		exit()
+		print("无缓存Port，使用默认值6666")
+		savedPort = 6666
 	newPort = savedPort
 
 newIpLen = len(newIpList)
@@ -84,7 +86,7 @@ ipDict["default"] = ipDict[savedName]
 #print("beforeSave",ipDict)
 saveObj(ipDict)
 
-cmd = "adb connect " + finalIp  + ":" + newPort
+cmd = "adb connect " + finalIp  + ":" + str(newPort)
 print(cmd)
 os.system(cmd)
 print('')
