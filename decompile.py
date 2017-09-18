@@ -34,14 +34,14 @@ def run():
 
 def perform_apktool(v):
 	cmd = 'start ' + tools_path + '\\' + apktool_dir
-	arg = '\\apktool d ' + ' '.join(v) + ' -f -o ' + v[0].split('.')[0]
+	arg = '\\apktool d ' + ' '.join(v) + ' -f -o ' + v[0] + '_de'
 	print(cmd + arg)
 	os.system(cmd + arg)
 
 def perform_dex2jar(v):
 	global jar_file_path
 	cmd = 'start ' + tools_path + '\\' + dex2jar_dir + '\\d2j-dex2jar ' + ' '.join(v)
-	filepath = v[0].split('.')[0] + '-dex2jar.jar'
+	filepath = v[0] + '_de ' + '-dex2jar.jar'
 	jar_file_path = filepath
 	cmd += ' -f -o ' + filepath
 	print(cmd)
